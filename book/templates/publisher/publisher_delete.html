@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Delete Publisher - {{ publisher.name }}</title>
+{% endblock head %}
+{% block content %}
+<h1>Delete Publisher</h1>
+<p>Are you sure you want to delete the Publisher "{{ publisher.name }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+    <a href="{% url 'book:ublisher-list' %}">Cancel</a>
+</form>
+{% endblock %}

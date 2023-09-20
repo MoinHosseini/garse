@@ -1,0 +1,78 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Garse - LogIn</title>
+
+    <link rel="shortcut icon" href="{% static 'book/lassets/images/fav.jpg' %}">
+    <link rel="stylesheet" href="{% static 'book/lassets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'book/lassets/css/fontawsom-all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'book/lassets/css/style.css' %}" />
+</head>
+
+<body>
+    <div class="container-fluid conya">
+        <div class="side-left">
+            <div class="sid-layy">
+                <div class="row slid-roo">
+                    {% comment %} <div class="data-portion">
+                        <h2>Manage Your orders</h2>
+                        <p>Add captions to your slides easily with the .carousel-caption element within any .carousel-item. They can be easily hidden on smaller viewports, as shown below, with optional display utilities. We hide them initially with .d-none and bring them back on medium-sized devices </p>
+                        <ul>
+                            <li>Ph :- +91 9756545434</li>
+                            <li>Fax :- (+7867 65 544)</li>
+                        </ul>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+        </div>
+        <div class="side-right">
+            <img class="logo" src="{% static 'book/lassets/images/logo.png' %}" alt="">
+
+            <h2></h2>
+            <form method="post" action="{% url 'book:login' %}">
+                {% csrf_token %}
+                <div class="form-row">
+                    <label for="id_username">نام کاربری</label>
+                    <input type="text" name="username" id="id_username" placeholder="abc123" class="form-control form-control-sm">
+                </div>
+            
+                <div class="form-row">
+                    <label for="id_password">رمز عبور</label>
+                    <input type="password" name="password" id="id_password" placeholder="********" class="form-control form-control-sm">
+                </div>
+            
+                <div class="form-row dfr">
+                    <button type="submit" class="btn btn-sm btn-success">ورود</button>
+                </div>                
+            </form>
+            
+
+            <div class="ord-v">
+                <a href="or login with"></a>
+            </div>
+
+            <div class="soc-det">
+                <ul>
+                    <li class="facebook"><i class="fab fa-facebook-f"></i></li>
+                    <li class="twitter"><i class="fab fa-twitter"></i></li>
+                    <li class="pin"><i class="fab fa-pinterest-p"></i></li>
+                    <li class="link"><i class="fab fa-linkedin-in"></i></li>
+                </ul>
+            </div>
+        </div>
+        {% comment %} <div class="copyco">
+            <p>Copyright 2019 @ smarteyeapps.com</p>
+        </div> {% endcomment %}
+    </div>
+</body>
+
+<script src="{% static 'book/lassets/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'book/lassets/js/popper.min.js' %}"></script>
+<script src="{% static 'book/lassets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'book/lassets/js/script.js' %}"></script>
+
+</html>

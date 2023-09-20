@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Request Detail</h1>
+  <p><strong>Name:</strong> {{ request.name }}</p>
+  <p><strong>Email:</strong> {{ request.email }}</p>
+  <p><strong>Phone Number:</strong> {{ request.phonenumber }}</p>
+  <p><strong>Date:</strong> {{ request.date }}</p>
+  <p><strong>Status:</strong> {% if request.status %}Approved{% else %}Pending{% endif %}</p>
+  <div>
+    <form action="{% url 'book:request-status' request.id %}" method="POST">
+      {% csrf_token %}
+      <button>Change Status</button>
+    </form>
+  </div>
+  <a href="{% url 'book:request-list' %}">Back to request list</a>
+{% endblock %}

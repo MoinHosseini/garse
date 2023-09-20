@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>جزئیات ناشر - {{ publisher.name }}</title>
+<style>
+    /* Additional CSS styles for the publisher detail page */
+    .publisher-detail {
+        margin-top: 20px;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    .content {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+</style>
+{% endblock head %}
+
+{% block content %}
+<div class="container">
+    <div class="publisher-detail">
+        <h1>{{ publisher.name }}</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>آدرس:</strong> {{ publisher.address }}</p>
+                <p><strong>شهر:</strong> {{ publisher.city }}</p>
+                <p><strong>کشور:</strong> {{ publisher.country }}</p>
+            </div>
+            <!-- Add other fields as needed -->
+        </div>
+        
+        {% if user.is_superuser %}
+                <a class="btn btn-primary" href="{% url 'book:publisher-update' publisher.pk %}">ویرایش</a>
+        <form method="post" action="{% url 'book:publisher-delete' publisher.pk %}" onsubmit="return confirm('آیا از حذف این ناشر اطمینان دارید؟');">
+            {% csrf_token %}
+            <button class="btn btn-danger" type="submit">حذف</button>
+        </form>
+        {% endif %}
+        <a class="btn btn-secondary" href="{% url 'book:publisher-list' %}">بازگشت به لیست ناشران</a>
+    </div>
+</div>
+{% endblock %}

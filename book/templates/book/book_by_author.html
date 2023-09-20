@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Books by Author</title>
+{% endblock head %}
+
+{% block content %}
+<h1>Books by Author</h1>
+<h2>Author: {{ author_name }}</h2>
+
+<ul>
+    {% for book in object_list %}
+        <li>{{ book.title }}</li>
+    {% empty %}
+        <li>No books found for this author.</li>
+    {% endfor %}
+</ul>
+{% endblock content %}

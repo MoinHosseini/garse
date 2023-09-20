@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>User Detail - {{ user.username }}</title>
+{% endblock head %}
+
+{% block content %}
+<div class="container">
+    <div class="user-detail">
+        <h1>User Detail: {{ user.username }}</h1>
+        <div class="card mb-4 shadow-sm">
+            {% if user.profile_picture %}
+            <img src="{{ user.profile_picture.url }}" alt="{{ user.username }}" class="card-img-top">
+            {% else %}
+            <div class="image-placeholder"></div>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ user.username }}</h5>
+                <p class="card-text">
+                    <strong>Name:</strong> {{ user.name }}<br>
+                    <strong>National ID:</strong> {{ user.national_id }}<br>
+                    <strong>Liked Books :</strong> {{ user.liked_books }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

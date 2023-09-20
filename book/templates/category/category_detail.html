@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>جزئیات دسته‌بندی - {{ category.name }}</title>
+<style>
+    /* Additional CSS styles for the category detail page */
+    .category-detail {
+        margin-top: 20px;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    .content {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+</style>
+{% endblock head %}
+
+{% block content %}
+<div class="container">
+    <div class="category-detail">
+        <h1>جزئیات دسته‌بندی</h1>
+        <h2>{{ category.name }}</h2>
+        <p>{{ category.description }}</p>
+        
+        {% if user.is_superuser %}
+        <a class="btn btn-primary" href="{% url 'book:category-update' category.pk %}">ویرایش</a>
+        <form method="post" action="{% url 'book:category-delete' category.pk %}" onsubmit="return confirm('آیا از حذف این دسته‌بندی اطمینان دارید؟');">
+            {% csrf_token %}
+            <button class="btn btn-danger" type="submit">حذف</button>
+        </form>
+        {% endif %}
+        <a class="btn btn-secondary" href="{% url 'book:category-list' %}">بازگشت به لیست دسته‌بندی‌ها</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Update User - {{ user.username }}</title>
+<style>
+    /* Additional CSS styles for the update user page */
+    .update-user {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .update-user label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .update-user input,
+    .update-user select,
+    .update-user textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+
+    .update-user button[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>
+{% endblock head %}
+
+{% block content %}
+<div class="container">
+    <div class="update-user">
+        <h1>Update User: {{ user.username }}</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <label for="id_username">Username:</label>
+            <input type="text" id="id_username" name="username" value="{{ user.username }}" required>
+            
+            <label for="id_password">New Password:</label>
+            <input type="password" id="id_password" name="password" required>
+            
+            <label for="id_name">Name:</label>
+            <input type="text" id="id_name" name="name" value="{{ user.name }}" required>
+            
+            <label for="id_national_id">National ID:</label>
+            <input type="text" id="id_national_id" name="national_id" value="{{ user.national_id }}" required>
+            
+            <label for="id_profile_picture">Profile Picture:</label>
+            <input type="file" id="id_profile_picture" name="profile_picture" accept="image/*">
+            
+            <label for="id_liked_books">Liked Books (JSON):</label>
+            <textarea id="id_liked_books" name="liked_books" required>{{ user.liked_books }}</textarea>
+            
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

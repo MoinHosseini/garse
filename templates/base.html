@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}
+    {% endblock head %}
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+      body {
+        background-color: #858282;
+        padding-top: 56px;
+        margin: 0; /* Remove default margin */
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+    
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+    
+      .content-container {
+        flex-grow: 1;
+        padding: 20px;
+        background: red;
+        overflow: auto; /* Enable scrolling if content overflows */
+      }
+    
+      .flex-shrink-0 {
+        background: white;
+      }
+    
+      .footer {
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        background-color: #343a40;
+        color: #fff;
+      }
+    
+      .dropdown-item:hover {
+        background-color: #007bff;
+      }
+    
+      body {
+        background-color: #858282;
+      }
+    
+      .navbar-brand {
+        margin-right: 45px;
+      }
+    </style>
+
+</head>
+
+<body>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="{% url 'book:home' %}">خانه</a>
+
+    <!-- Add the button for toggling the navigation menu on small screens -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar menu items -->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      
+      <!-- Section 1 -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'book:book-list' %}">کتاب ها</a>
+        </li>
+      </ul>
+      
+      <!-- Section 2 -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'book:publisher-list' %}">ناشران</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'book:author-list' %}">نویسندگان</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'book:category-list' %}">ژانرها</a>
+        </li>
+      </ul>
+
+      
+      {% if user.is_superuser %}
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">مدیریت</a>
+          <div class="dropdown-menu bg-dark" style="min-width: auto;">
+            <a class="dropdown-item text-white" href="{% url 'book:book-create' %}">افزودن کتاب </a>
+            <a class="dropdown-item text-white" href="{% url 'book:category-create' %}">افزودن ژانر</a>
+            <a class="dropdown-item text-white" href="{% url 'book:publisher-create' %}">افزودن نشر</a>
+            <a class="dropdown-item text-white" href="{% url 'book:author-create' %}">افزودن نویسنده</a>
+            <a class="dropdown-item text-white" href="{% url 'book:send-email' %}">ارسال ایمیل خبرنامه</a>
+            <a class="dropdown-item text-white" href="{% url 'book:user-create' %}">افزودن کاربر</a>
+            <a class="dropdown-item text-white" href="{% url 'book:request-list' %}">درخواست های عضویت</a>
+            <a class="dropdown-item text-white" href="{% url 'book:comment-list' %}">نظرات/پیشنهادات</a>
+          </div>
+        </li>
+      </ul>
+      {% endif %}
+    
+    
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">جستجوی پیشرفته</a>
+          <div class="dropdown-menu bg-dark" style="min-width: auto;">
+            <a class="dropdown-item text-white" href="{% url 'book:books-by-author' %}">کتب نویسنده </a>
+            <a class="dropdown-item text-white" href="{% url 'book:books-by-publisher' %}">کتب نشر</a>
+            <a class="dropdown-item text-white" href="{% url 'book:books-by-category' %}">کتب ژانر</a>
+          </div>
+        </li>
+      </ul>
+
+            <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          {% if user.is_authenticated %}
+          <a class="nav-link" href="{% url 'book:logout' %}">خروج</a>
+          {% else %}
+          <a class="nav-link" href="{% url 'book:login' %}">ورود</a>
+          {% endif %}
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <main class="flex-shrink-0">
+    {% comment %} <div class="container mt-5"> {% endcomment %}
+        {% block content %}
+        {% endblock %}
+    {% comment %} </div> {% endcomment %}
+  </main>
+  
+  <!-- Footer -->
+  <footer class="footer mt-auto py-3 bg-dark">
+    <div class="container text-center">
+      <span class="text-muted">Moin</span>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

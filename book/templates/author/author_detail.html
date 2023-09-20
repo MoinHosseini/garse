@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>جزئیات نویسنده - {{ author.name }}</title>
+<style>
+    /* Additional CSS styles for the author detail page */
+    .author-detail {
+        margin-top: 20px;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    .content {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+</style>
+{% endblock head %}
+
+{% block content %}
+<div class="container">
+    <div class="author-detail">
+        <h1>{{ author.name }}</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>بیوگرافی:</strong> {{ author.bio }}</p>
+            </div>
+            <div class="col-md-6">
+                <!-- Add other fields as needed -->
+            </div>
+        </div>
+        
+        {% if user.is_superuser %}
+        <a class="btn btn-primary" href="{% url 'book:author-update' author.pk %}">ویرایش</a>
+        <form method="post" action="{% url 'book:author-delete' author.pk %}" onsubmit="return confirm('آیا از حذف این نویسنده اطمینان دارید؟');">
+            {% csrf_token %}
+            <button class="btn btn-danger" type="submit">حذف</button>
+        </form>
+        {% endif %}
+        <a class="btn btn-secondary" href="{% url 'book:author-list' %}">بازگشت به لیست نویسندگان</a>
+    </div>
+</div>
+{% endblock %}

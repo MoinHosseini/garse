@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Update Publisher - {{ publisher.name }}</title>
+<style>
+    /* Additional CSS styles for the update publisher page */
+    .update-publisher {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .update-publisher label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .update-publisher input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+
+    .update-publisher button[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>
+{% endblock head %}
+{% block content %}
+<div class="container">
+    <div class="update-publisher">
+        <h1>Update Publisher: {{ publisher.name }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            
+            <label for="id_name">Name:</label>
+            <input type="text" id="id_name" name="name" value="{{ publisher.name }}" required>
+            
+            <label for="id_address">Address:</label>
+            <input type="text" id="id_address" name="address" value="{{ publisher.address }}" required>
+            
+            <label for="id_city">City:</label>
+            <input type="text" id="id_city" name="city" value="{{ publisher.city }}" required>
+            
+            <label for="id_country">Country:</label>
+            <input type="text" id="id_country" name="country" value="{{ publisher.country }}" required>
+            
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

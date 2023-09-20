@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Publisher List</title>
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h1>Publisher List</h1>
+    <div class="card-list">
+        {% for publisher in publisher_list %}
+        <div class="card">
+            <div class="card mb-4 shadow-sm">
+                {% if publisher.image %}
+                <img src="{{ publisher.image.url }}" class="card-img-top" alt="{{ publisher.name }}">
+                {% else %}
+                <div class="no-image-placeholder"></div>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ publisher.name }}</h5>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="{% url 'book:publisher-detail' publisher.pk %}" class="btn btn-sm btn-outline-secondary">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:5 %} {# Check if this is the last item in the row #}
+            </div><div class="card-list">
+        {% endif %}
+        {% empty %}
+        <div class="col-md-12">
+            <p>No publishers available.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

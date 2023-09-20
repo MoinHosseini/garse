@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Update Category - {{ category.name }}</title>
+<style>
+    /* Additional CSS styles for the update category page */
+    .update-category {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .update-category label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .update-category input,
+    .update-category textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+
+    .update-category button[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>
+{% endblock head %}
+{% block content %}
+
+<div class="container">
+    <div class="update-category">
+        <h1>Update Category</h1>
+        <form method="post">
+            {% csrf_token %}
+            
+            <label for="id_name">Name:</label>
+            <input type="text" id="id_name" name="name" value="{{ category.name }}" required>
+            
+            <label for="id_description">Description:</label>
+            <textarea id="id_description" name="description" required>{{ category.description }}</textarea>
+            
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

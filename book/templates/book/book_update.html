@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Update Book - {{book.title}}</title>
+<style>
+    /* Additional CSS styles for the update book page */
+    .update-book {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .update-book label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .update-book input,
+    .update-book select,
+    .update-book textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+
+    .update-book button[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>
+{% endblock head %}
+{% block content %}
+
+<div class="container">
+    <div class="update-book">
+        <h1>Update Book: {{ book.title }}</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <label for="id_title">Title:</label>
+            <input type="text" id="id_title" name="title" value="{{ book.title }}" required>
+            
+            <label for="id_author">Author:</label>
+            <select id="id_author" name="author" required>
+                {% for author in authors %}
+                    <option value="{{ author.id }}" {% if book.author.id == author.id %}selected{% endif %}>{{ author.name }}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="id_genre">Genre:</label>
+            <select id="id_genre" name="genre" required>
+                {% for genre in genres %}
+                    <option value="{{ genre.id }}" {% if book.genre.id == genre.id %}selected{% endif %}>{{ genre.name }}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="id_publication_date">Publication Date:</label>
+            <input type="date" id="id_publication_date" name="publication_date" value="{{ book.publication_date }}" required>
+            
+            <label for="id_isbn">ISBN:</label>
+            <input type="text" id="id_isbn" name="isbn" value="{{ book.isbn }}" required>
+            
+            <label for="id_description">Description:</label>
+            <textarea id="id_description" name="description" required>{{ book.description }}</textarea>
+            
+            <label for="id_price">Price:</label>
+            <input type="number" id="id_price" name="price" value="{{ book.price }}" required>
+            
+            <label for="id_cover_image">Cover Image:</label>
+            <input type="file" id="id_cover_image" name="cover_image" accept="image/*">
+            
+            <label for="id_publisher">Publisher:</label>
+            <select id="id_publisher" name="publisher" required>
+                {% for publisher in publishers %}
+                    <option value="{{ publisher.id }}" {% if book.publisher.id == publisher.id %}selected{% endif %}>{{ publisher.name }}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="id_language">Language:</label>
+            <input type="text" id="id_language" name="language" value="{{ book.language }}" required>
+            
+            <label for="id_page_count">Page Count:</label>
+            <input type="number" id="id_page_count" name="page_count" value="{{ book.page_count }}" required>
+            
+            <label for="id_average_rating">Average Rating:</label>
+            <input type="number" id="id_average_rating" name="average_rating" step="0.1" value="{{ book.average_rating }}" required>
+            
+            <label for="id_is_available">Is Available:</label>
+            <input type="checkbox" id="id_is_available" name="is_available" {% if book.is_available %}checked{% endif %}>
+            
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

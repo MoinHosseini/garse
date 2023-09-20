@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h1 class="mb-3">All Comments</h1>
+    
+    <div class="comment-filters mb-3">
+      <a href="{% url 'book:comment-list' %}" class="btn btn-outline-primary {% if filter_param == 'all' %}active{% endif %}">All</a>
+      <a href="{% url 'book:comment-list' %}?filter=approved" class="btn btn-outline-success {% if filter_param == 'approved' %}active{% endif %}">Approved</a>
+      <a href="{% url 'book:comment-list' %}?filter=pending" class="btn btn-outline-warning {% if filter_param == 'pending' %}active{% endif %}">Pending</a>
+    </div>
+    
+    <ul class="list-group">
+      {% for comment in comments %}
+        <li class="list-group-item">
+          <a href="{% url 'book:comment-detail' comment.pk %}">{{ comment.text }}</a>
+          <span class="badge bg-{% if comment.status %}success{% else %}warning{% endif %} float-end">{% if comment.status %}Approved{% else %}Pending{% endif %}</span>
+        </li>
+      {% empty %}
+        <li class="list-group-item">No comments available.</li>
+      {% endfor %}
+    </ul>
+
+    {# <a href="{% url 'book:comment-create' %}" class="btn btn-primary mt-3">Add a new comment</a> #}
+  </div>
+{% endblock %}

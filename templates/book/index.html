@@ -1,0 +1,551 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Garse</title>
+    <link rel="shortcut icon" href="{% static 'book/assets/images/fav.png' %}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'book/assets/images/fav.jpg' %}">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'book/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'book/assets/css/fontawsom-all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'book/assets/css/style.css' %}">
+<style>
+
+</style>
+
+</head>
+
+<body>
+    <!--########################### Header Starts Here ###################### -->
+    <div class="home-screen container-fluid">
+        <div class="home-cover">
+            <div id="menu-jk" class="header">
+                <div class="container">
+                    <div class="row" dir='rtl'>
+                        <div class="col-md-3 logo">
+                            <img class="logo-wt" src="{% static 'book/assets/images/logo.png' %}" alt="">
+                            <img class="logo-gry" src="{% static 'book/assets/images/logo-gray.png' %}" alt="">
+
+                            <a data-toggle="collapse" data-target="#menu" href="#menu"><i
+                                    class="fas d-block d-md-none small-menu fa-bars"></i></a>
+                        </div>
+                        <div id="menu" class="col-md-9 d-none d-md-block">
+                            <ul>
+                                <li><a href="{% url 'book:login' %}">ورود به حساب کاربری</a></li>
+                                <li><a href="#contact_us">ارتباط با ما</a></li>
+                                <li><a href="#teacher">کارکنان</a></li>
+                                <li><a href="#gallery">گالری</a></li>
+                                <li><a href="#courses">بخش ها</a></li>
+                                <li><a href="{% url "book:book-list" %}">کتاب ها</a></li>
+                                <li><a href="#">خانه</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="container">
+                <div class="row home-detail">
+                    <div class="col-md-7 homexp">
+                        <h5>کتاب و بوردگیم </h5>
+                        <h2>گارسه</h2>
+                        <p>توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح </p>
+                    </div>
+
+                    <div class="col-md-5 hom-form">
+                        <div class="registration-form row no-margin">
+                            <h5>ثبت درخواست عضویت</h5>
+                            <input placeholder="نام" type="text" class="form-control">
+                            <input placeholder="ایمیل" type="text" class="form-control">
+                            <input placeholder="شماره موبایل" type="text" class="form-control">
+                            <input placeholder="کد ملی" type="text" class="form-control">
+                            
+                            <button class="btn w-100 btn-success">ارسال</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ################# Why Choose Us Starts Here #######################--->
+
+    <div class="why-choos-us container-fluid">
+        <div class="container">
+            <div class="session-title">
+                <h2>چرا گارسه ؟</h2>
+                <p>  توضیح توضیح توضیح توضیح توضیح توضیح  توضیح توضیح توضیح توضیح توضیح توضیح </p>
+            </div>
+            <div class="why-ro row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="col-card">
+                        <div class="icon">
+                            <i class="far fa-calendar-plus"></i>
+                        </div>
+                        <div class="detail">
+                            <h4>کادر مجرب</h4>
+                            <p>  توضیح توضیح توضیح توضیح توضیح توضیح  توضیح توضیح توضیح توضیح توضیح توضیح </p>
+                        </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="col-card">
+                        <div class="icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="detail">
+                            <h4>فضای بانشاط</h4>
+                            <p>  توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح توضیح </p>
+                        </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="col-card">
+                        <div class="icon">
+                            <i class="far fa-heart"></i>
+                        </div>
+                        <div class="detail">
+                            <h4>تنوع و کیفیت</h4>
+                            <p>Turpis accumsan. Proin id ligula suspendisse. Aliquet fringilla, aptent eu dignissim.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="col-card">
+                        <div class="icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <div class="detail">
+                            <h4>بازی و سرگرمی</h4>
+                            <p>Turpis accumsan. Proin id ligula suspendisse. Aliquet fringilla, aptent eu dignissim.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="col-card">
+                        <div class="icon">
+                            <i class="fa fa-graduation-cap"></i>
+                        </div>
+                        <div class="detail">
+                            <h4>فروشگاه هایبرید</h4>
+                            <p>Turpis accumsan. Proin id ligula suspendisse. Aliquet fringilla, aptent eu dignissim.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="col-card">
+                        <div class="icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="detail">
+                            <h4>دسترسی آنلاین</h4>
+                            <p>Turpis accumsan. Proin id ligula suspendisse. Aliquet fringilla, aptent eu dignissim.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--################### Courses Starts Here #######################--->
+
+    <div id="courses" class="courses container-fluid">
+        <div class="container">
+            <div class="session-title">
+                <h2>بخش های گارسه</h2>
+                <p>Sagittis vulputate magna sagittis sagittis erat feugiat nullam cubilia amet dignissim Euismod.</p>
+            </div>
+            <div class="row">
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="courses-box">
+                        <div class="icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3>انواع کتاب و رمان</h3>
+                        <p>Natoque id suspendisse est. Accumsan sodales a adipiscing. Vestibulum facilisi volutpat
+                            Nulla natoque mauris, sit morbi.</p>
+                        <div class="bottom-courses">
+                            <div class="teacher">
+                                <img src="{% static 'book/assets/images/teacher/t2.jpg' %}" alt="">
+                                <span>Jack Akashh</span>
+                            </div>
+                            <div class="c-cost">$130</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="courses-box">
+                        <div class="icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h3>انواع بازی و بوردگیم</h3>
+                        <p>Natoque id suspendisse est. Accumsan sodales a adipiscing. Vestibulum facilisi volutpat
+                            Nulla natoque mauris, sit morbi.</p>
+                        <div class="bottom-courses">
+                            <div class="teacher">
+                                <img src="{% static 'book/assets/images/teacher/t2.jpg' %}" alt="">
+                                <span>Yasmin Akther</span>
+                            </div>
+                            <div class="c-cost">$160</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="courses-box">
+                        <div class="icon">
+                            <i class="fas fa-user-edit"></i>
+                        </div>
+                        <h3>فروشگاه هایبرید</h3>
+                        <p>Natoque id suspendisse est. Accumsan sodales a adipiscing. Vestibulum facilisi volutpat
+                            Nulla natoque mauris, sit morbi.</p>
+                        <div class="bottom-courses">
+                            <div class="teacher">
+                                <img src="{% static 'book/assets/images/teacher/t2.jpg' %}" alt="">
+                                <span>Parson Smith</span>
+                            </div>
+                            <div class="c-cost">$120</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--################### Team Member Start Here #######################--->
+
+    <section id="teacher" class="team-member container-fluid">
+        <div class="container">
+            <div class="session-title">
+                <h2>Our Staff</h2>
+                <p>Sagittis vulputate magna sagittis sagittis erat feugiat nullam cubilia amet dignissim Euismod.</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-box">
+                        <img src="{% static 'book/assets/images/teacher/t2.jpg' %}" alt="">
+                        <div class="box">
+                            <h4>Aashiqur Rahman</h4>
+                            <p>Founder</p>
+                            <ul>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-box">
+                        <img src="{% static 'book/assets/images/teacher/t2.jpg' %}" alt="">
+                        <div class="box">
+                            <h4>John Doe</h4>
+                            <p>Web Developer</p>
+                            <ul>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-box">
+                        <img src="{% static 'book/assets/images/teacher/t2.jpg' %}" alt="">
+                        <div class="box">
+                            <h4>Marry Doe</h4>
+                            <p>Photographer</p>
+                            <ul>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-box">
+                        <img src="{% static 'book/assets/images/teacher/t2.jpg' %}" alt="">
+                        <div class="box">
+                            <h4>Jakson Harry</h4>
+                            <p>Designer</p>
+                            <ul>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--################### Gallery Starts Here #######################--->
+
+    <div id="gallery" class="gallery container-fluid">
+        <div class="container">
+            <div class="session-title">
+                <h2>Gallery</h2>
+                <p>Sagittis vulputate magna sagittis sagittis erat feugiat nullam cubilia amet dignissim Euismod.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="gallery-box">
+                        <img src="{% static 'book/assets/images/gallery/g1.jpg' %}" alt="LL">
+                        <div class="g-overlay">
+                            <div class="box">
+                                <a href="{% static 'book/assets/images/gallery/g1.jpg' %}" data-lightbox="image-1"
+                                    data-title="Image 1"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="gallery-box">
+                        <img src="{% static 'book/assets/images/gallery/g1.jpg' %}" alt="">
+                        <div class="g-overlay">
+                            <div class="box">
+                                <a href="{% static 'book/assets/images/gallery/g1.jpg' %}" data-lightbox="image-2"
+                                    data-title="Image 2"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="gallery-box">
+                        <img src="{% static 'book/assets/images/gallery/g1.jpg' %}" alt="">
+                        <div class="g-overlay">
+                            <div class="box">
+                                <a href="{% static 'book/assets/images/gallery/g1.jpg' %}" data-lightbox="image-3"
+                                    data-title="Image 3"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="gallery-box">
+                        <img src="{% static 'book/assets/images/gallery/g1.jpg' %}" alt="">
+                        <div class="g-overlay">
+                            <div class="box">
+                                <a href="{% static 'book/assets/images/gallery/g1.jpg' %}" data-lightbox="image-4"
+                                    data-title="Image 4"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% comment %} 
+    <!--################### Blog Starts Here #######################--->
+
+    <div id="blog" class="blog container-fluid">
+        <div class="container">
+            <div class="session-title">
+                <h2>Our Blog</h2>
+                <p>Sagittis vulputate magna sagittis sagittis erat feugiat nullam cubilia amet dignissim Euismod.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="blog-box">
+                        <img src="{% static 'book/assets/images/blog/b-1.jpg' %}" alt="">
+                        <div class="box">
+                            <h5> Lorem ipsum dolor sit amet consectetur.</h5>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore libero consectetur
+                                aliquam.
+                            </p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="blog-box">
+                        <img src="{% static 'book/assets/images/blog/b-2.jpg' %}" alt="">
+                        <div class="box">
+                            <h5> Lorem ipsum dolor sit amet consectetur.</h5>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore libero consectetur
+                                aliquam.
+                            </p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="blog-box">
+                        <img src="{% static 'book/assets/images/blog/b-3.jpg' %}" alt="">
+                        <div class="box">
+                            <h5> Lorem ipsum dolor sit amet consectetur.</h5>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore libero consectetur
+                                aliquam.
+                            </p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> {% endcomment %}
+
+
+    <!--################### Contact Starts Here #######################--->
+
+    <div id="contact_us" class="contact container-fluid">
+        <div class="container">
+            <div class="session-title">
+                <h2>ارسال پیام</h2>
+                <p>نظر، انتقاد و یا پیشنهاد خود را به ما انتقال بدهید</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <form action="{% url 'book:comment-submit' %}" method="POST" class="form-group">
+                        {% csrf_token %}
+                        <input type="text" name="name" class="form-control" placeholder="نام">
+                        <input type="email" name="email" class="form-control" placeholder="ایمیل">
+                        <textarea name="text" cols="30" rows="5" class="form-control" placeholder="پیام شما"></textarea>
+                        <input type="submit" class="btn btn-success btn-block" value="Send">
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-info">
+                        <h5>راه های ارتباطی</h5>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui alias, tempore voluptate saepe
+                            nihil error, velit quod reprehenderit impedit iure aliquid repudiandae aut consequatur
+                            eaque aperiam fugit nobis beatae.</p>
+                        <p><b>Email : </b> info@gmail.com</p>
+                        <p><b>Phone : </b> 0253 1234 5678</p>
+                        <p><b>Address : </b>سالاریه - پایینتر از میدان میثم - کتابفروشی گارسه</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <iframe
+                    src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=Meisam%20Garseh%20Bookstore%20JR7V+WJG,%20Qom,%20Qom%20Province,%20Iran+(Garseh%20BookStore)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                    width="100%"
+                    height="400"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                ></iframe>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+
+
+    <!--################### Footer Starts Here #######################--->
+
+    <div class="container-fluid footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="box" dir='ltr'>
+                        <h5>Contact Us</h5>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-map-marked-alt"></i> سالاریه - پایینتر از میدان میثم - کتابفروشی گارسه</a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-phone"></i> 025 3123 4567</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i> Garseh.ir</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box">
+                        <h5>خبرنامه</h5>
+                        <p>برای عضویت، ایمیل خود را وارد کنید</p>
+                        <input type="text" class="form-control" placeholder="Your Email">
+                        <button class="btn btn-success">خبرم کن!</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box">
+                        <h5>ما را دنبال کنید</h5>
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                            <li><a href="#"><i class="fab fa-linkedin"></i> Linkedin</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--################### Scroll To Top Starts Here #######################--->
+
+    <div class="scroll-top sticky-top">
+        <div class="container">
+            <div class="scroll-to-top">
+                <i class="fa fa-chevron-up"></i>
+            </div>
+        </div>
+    </div>
+
+    <!--################### Scroll To Top Ends Here #######################--->
+
+
+    <!--################### Scroll To Top Starts Here #######################--->
+{% comment %} 
+    <div class="popup-wp">
+        <div class="popup">
+            <h4>Sign In or Registration</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum sit natus vel eum tenetur impedit
+                voluptatem at sapiente quaerat quisquam labore veniam officiis exercitationem, ipsum doloribus cumque
+                iusto modi dolorum?</p>
+            <button class="btn btn-success">Login</button>
+            <button class="btn btn-success">Sign Up</button>
+        </div>
+    </div> {% endcomment %}
+
+    <!--################### Scroll To Top Ends Here #######################--->
+
+    <!--################### Scroll To Top Starts Here #######################--->
+
+    <div class="popup-overlay"></div>
+
+    <!--################### Scroll To Top Ends Here #######################--->
+
+    <!--################### Script Inclusion Starts Here #######################--->
+
+    <script src="{% static 'book/assets/js/jquery-3.5.1.slim.min.js' %}"></script>
+    <script src="{% static 'book/assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'book/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'book/assets/js/lightbox.min.js' %}"></script>
+    <script src="{% static 'book/assets/js/script.js' %}"></script>
+
+    <!--################### Script Inclusion Ends Here #######################--->
+
+</body>
+
+</html>

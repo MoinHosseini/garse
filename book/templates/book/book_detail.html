@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% block head %}
+<html lang="fa" dir="rtl">
+<style>
+    .footer {
+        width: 100%;
+        margin-top: auto;
+        position: absolute;
+        bottom: 0;
+    }
+    /* Additional CSS styles for the book detail page */
+    .container {
+        margin-top: 20px;
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .book-image {
+        width: 50%;
+        float: right;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .book-image img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+    .book-details {
+        width: 50%;
+        float: left;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .book-details h1 {
+        font-size: 24px;
+        margin-top: 0;
+    }
+    .book-details p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    .like-button-form {
+        margin-top: 10px;
+    }
+    .btn-primary,
+    .btn-danger,
+    .btn-secondary {
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+    
+    /* Luxurious borderless table style */
+    .luxury-table {
+        width: 100%;
+    }
+    .luxury-table th,
+    .luxury-table td {
+        border: none;
+        padding: 10px;
+        text-align: left;
+    }
+    .luxury-table th {
+        background-color: #f2f2f2;
+        font-size: 18px;
+    }
+    .luxury-table td {
+        font-size: 16px;
+        background-color: #f9f9f9;
+    }
+    .luxury-table tr:hover {
+        background-color: #e0e0e0;
+    }
+
+    .button-div {
+        margin-top: 20px;
+    }
+</style>
+{% endblock head %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col book-image">
+                <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
+            </div>
+            <div class="col book-details">
+                <h1>{{ book.title }}</h1>
+                <table class="luxury-table">
+                    <tr>
+                        <th>نویسنده</th>
+                        <td>{{ book.author }}</td>
+                    </tr>
+                    <tr>
+                        <th>ژانر</th>
+                        <td>{{ book.genre }}</td>
+                    </tr>
+                    <tr>
+                        <th>تاریخ انتشار</th>
+                        <td>{{ book.publication_date }}</td>
+                    </tr>
+                    <tr>
+                        <th>شابک</th>
+                        <td>{{ book.isbn }}</td>
+                    </tr>
+                    <tr>
+                        <th>توضیحات</th>
+                        <td>{{ book.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>قیمت</th>
+                        <td>{{ book.price }}</td>
+                    </tr>
+                    <tr>
+                        <th>ناشر</th>
+                        <td>{{ book.publisher }}</td>
+                    </tr>
+                    <tr>
+                        <th>زبان</th>
+                        <td>{{ book.language }}</td>
+                    </tr>
+                    <tr>
+                        <th>تعداد صفحات</th>
+                        <td>{{ book.page_count }}</td>
+                    </tr>
+                    <tr>
+                        <th>امتیاز میانگین</th>
+                        <td>{{ book.average_rating }}</td>
+                    </tr>
+                    <tr>
+                        <th>وضعیت</th>
+                        <td>{% if book.is_available %}موجود{% else %}ناموجود{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>تعداد لایک</th>
+                        <td>{{ total_likes }}</td>
+                    </tr>
+                </table>
+                <!-- Style the "Like/Unlike" button as a heart icon -->
+                <!-- Button div -->
+                <div class="button-div">
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'book:like-book' book.id %}" method="post" class="like-button-form">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">
+                            {% if user_has_liked %}
+                            <div class="heart-icon">
+                                <svg style="color: red" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" fill="red"></path>
+                                </svg>
+                            </div>
+                            {% else %}
+                            <div class="heart-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/> </svg>
+                            </div>
+                            {% endif %}
+                        </button>
+                    </form>
+                    {% endif %}
+
+                    {% if user.is_superuser %}
+                    <a class="btn btn-primary" href="{% url 'book:book-update' book.pk %}">ویرایش</a>
+                    <form method="post" action="{% url 'book:book-delete' book.pk %}" onsubmit="return confirm('آیا از حذف این کتاب اطمینان دارید؟');">
+                        {% csrf_token %}
+                        <button class="btn btn-danger" type="submit">حذف</button>
+                    </form>
+                    {% endif %}
+                </div>
+                <a class="btn btn-secondary" href="{% url 'book:book-list' %}">بازگشت به لیست کتاب‌ها</a>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <hr>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+body {
+  background-image: url('/static/images/1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* background-color: transparent; */
+}
+
+* {
+  color: #fff !important;
+}
+.text-container {
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity (0.5) as needed */
+  color: #fff; /* Text color */
+  padding: 20px; /* Add padding for spacing */
+  border-radius: 5px; /* Optional: Add rounded corners to the container */
+  text-align: center; /* Center the text horizontally */
+  margin-top: 20vh; /* Adjust the top margin to vertically center the container */
+  transform: translateY(-50%); /* Vertically center the container */
+}

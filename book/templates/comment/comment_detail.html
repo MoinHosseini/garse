@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Comment Detail</h1>
+  <p><strong>Name:</strong> {{ comment.name }}</p>
+  <p><strong>Email:</strong> {{ comment.email }}</p>
+  <p><strong>Date:</strong> {{ comment.date }}</p>
+  <p><strong>Status:</strong> {% if comment.status %}Approved{% else %}Pending{% endif %}</p>
+  <div>
+    <form action="{% url 'book:comment-status' comment.id %}" method="POST">
+      {% csrf_token %}
+      <button>Change Status</button>
+    </form>
+  </div>
+  <p><strong>Comment:</strong> {{ comment.text }}</p>
+  <a href="{% url 'book:comment-list' %}">Back to comment list</a>
+{% endblock %}

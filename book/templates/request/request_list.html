@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h1 class="mb-3">All Requests</h1>
+    
+    <div class="comment-filters mb-3">
+      <a href="{% url 'book:request-list' %}" class="btn btn-outline-primary {% if filter_param == 'all' %}active{% endif %}">All</a>
+      <a href="{% url 'book:request-list' %}?filter=approved" class="btn btn-outline-success {% if filter_param == 'approved' %}active{% endif %}">Approved</a>
+      <a href="{% url 'book:request-list' %}?filter=pending" class="btn btn-outline-warning {% if filter_param == 'pending' %}active{% endif %}">Pending</a>
+    </div>
+    
+
+    
+    <ul class="list-group">
+      {% for request in requests %}
+        <li class="list-group-item">
+          <a href="{% url 'book:request-detail' request.pk %}">{{ request.name }}</a>
+          <span class="badge bg-{% if request.status %}success{% else %}warning{% endif %} float-end">{% if request.status %}Approved{% else %}Pending{% endif %}</span>
+        </li>
+
+      {% empty %}
+        <li class="list-group-item">No requests available.</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}
